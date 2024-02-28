@@ -28,13 +28,13 @@ public class PizzaOrder {
         //cycles through pizzaOrderList
         for(AbstractPizza pizza: pizzaOrderList) {
             //checking if the orderID matches
-            if(pizza.getOrderID()!=orderID) {
+            if(pizza.getPizzaOrderID()!=orderID) {
                 continue;
             }
             
             //if we find a match, we print out each individual topping
-            else if (pizza.getOrderID()==orderID){
-                for(Toppings topping: pizza.getToppingList()) {
+            else if (pizza.getPizzaOrderID()==orderID){
+                for(Toppings topping: pizza.getToppingsList()) {
                     System.out.println(topping.toString());
                 }
             }
