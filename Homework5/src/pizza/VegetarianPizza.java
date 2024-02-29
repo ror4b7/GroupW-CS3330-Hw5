@@ -1,5 +1,6 @@
 package pizza;
 
-public class VegetarianPizza {
-
+public class VegetarianPizza  extends AbstractPizza
+{
+    
 }

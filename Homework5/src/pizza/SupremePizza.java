@@ -1,5 +1,6 @@
 package pizza;
 
-public class SupremePizza {
-
+public class SupremePizza  extends AbstractPizza
+{
+    
 }

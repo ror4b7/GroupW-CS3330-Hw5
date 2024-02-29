@@ -1,5 +1,9 @@
 package pizza;
 
-public class HawaiianPizza {
+public class HawaiianPizza extends AbstractPizza {
+
+
+
+   
 
 }
