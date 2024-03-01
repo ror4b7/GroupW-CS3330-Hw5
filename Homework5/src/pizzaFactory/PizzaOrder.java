@@ -45,4 +45,21 @@ public class PizzaOrder {
             }
         }
     }
+    
+    /*This function checks if there are any uncooked pizzas in the list. If there are,
+     * the function returns true; otherwise, it returns false.
+     */
+    public boolean isThereAnyUncookedPizza() {
+
+        //cycling through pizzaOrderList
+        for(AbstractPizza pizza: pizzaOrderList) {
+            if(pizza.getCookingStrategy()==null) {
+                //checking for any uncooked pizzas
+                return true;
+            }
+        }
+
+        //elif all pizzas are cooked
+        return false;
+    }
 }
