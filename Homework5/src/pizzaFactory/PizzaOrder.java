@@ -62,4 +62,29 @@ public class PizzaOrder {
         //elif all pizzas are cooked
         return false;
     }
+
+    /*In this function, we check to see if there are any uncooked pizzas via
+     * the prior function, isThereAnyUncookedPizza(). If there are, this function
+     * will throw a general exception, warning that there are still pizzas to be
+     * cooked. Otherwise, it will return the total cost of all pizzas in the cart.
+    */
+    public double checkout() throws Exception {
+        
+        //variables used in the function
+        boolean cookCheck = isThereAnyUncookedPizza();
+        double cartTotal = 0.0;
+
+        //in the case there is an uncooked pizza, the function throws a general Exception
+        if(cookCheck==true) {
+            throw new Exception("Not all pizzas have been cooked yet!");
+        }
+
+        //if all pizzas are cooked, the total price is added up and returned
+        else {
+            for(AbstractPizza pizza: pizzaOrderList) {
+                cartTotal = cartTotal + pizza.getTotalPrice();
+            }
+        }
+        return cartTotal;
+    }
 }
