@@ -112,23 +112,21 @@ public class PizzaOrder {
                 //determining cooking strategy based on the given cookingStrategyType
                 switch (cookingStrategyType) {
                     case CONVENTIONAL_OVEN:
-                        ConventionalOvenCookingStrategy ccStrat = new ConventionalOvenCookingStrategy();
-                        result = ccStrat.cook(pizza);
+                        cookingStrategy = new ConventionalOvenCookingStrategy();
                         break;
                 
                     case BRICK_OVEN:
-                        BrickOvenCookingStrategy bStrat = new BrickOvenCookingStrategy();
-                        result = bStrat.cook(pizza);
+                        cookingStrategy = new BrickOvenCookingStrategy();
                         break;
 
                     case MICROWAVE:
-                        MicrowaveCookingStrategy mStrat = new MicrowaveCookingStrategy();
-                        result = mStrat.cook(pizza);
+                        cookingStrategy = new MicrowaveCookingStrategy();
                         break;
 
                     default:
                         break;
                 }
+                cookingStrategy.cook(pizza);
                 return result;
             }
         }
