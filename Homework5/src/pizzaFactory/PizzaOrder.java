@@ -3,7 +3,11 @@ package pizzaFactory;
 import java.util.List;
 
 import pizza.AbstractPizza;
+import pizza.BrickOvenCookingStrategy;
+import pizza.ConventionalOvenCookingStrategy;
+import pizza.CookingStyleType;
 import pizza.ICookingStrategy;
+import pizza.MicrowaveCookingStrategy;
 import pizza.Toppings;
 
 public class PizzaOrder {
@@ -86,5 +90,51 @@ public class PizzaOrder {
             }
         }
         return cartTotal;
+    }
+
+    /*In this function, we find the pizza in the list with the given orderID (if it
+     * exists) and cook it based on the assigned cookingStrategyType. We then return
+     * the boolean result from the cook() function.
+    */
+    public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) {
+        
+        boolean result = false;
+
+        //cycling through the pizzas in the list
+        for(AbstractPizza pizza: pizzaOrderList) {   
+            
+            //if the orderID does not match the one given, proceed through the list 
+            if(pizza.getPizzaOrderID()!=orderID) {
+                continue;
+            }
+
+            else {
+                //determining cooking strategy based on the given cookingStrategyType
+                switch (cookingStrategyType) {
+                    case CONVENTIONAL_OVEN:
+                        ConventionalOvenCookingStrategy ccStrat = new ConventionalOvenCookingStrategy();
+                        result = ccStrat.cook(pizza);
+                        break;
+                
+                    case BRICK_OVEN:
+                        BrickOvenCookingStrategy bStrat = new BrickOvenCookingStrategy();
+                        result = bStrat.cook(pizza);
+                        break;
+
+                    case MICROWAVE:
+                        MicrowaveCookingStrategy mStrat = new MicrowaveCookingStrategy();
+                        result = mStrat.cook(pizza);
+                        break;
+
+                    default:
+                        break;
+                }
+                return result;
+            }
+        }
+
+        //error message in the case that there is no pizza with the given ID
+        System.out.println("There is no pizza with the order ID " + orderID + "in this list.");
+        return result;
     }
 }
