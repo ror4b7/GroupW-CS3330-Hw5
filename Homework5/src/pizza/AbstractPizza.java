@@ -9,7 +9,7 @@ public class AbstractPizza {
     protected double totalPrice;
     protected int pizzaOrderID;
     protected static int orderIDCounter;
-    protected ICookingStrategy cookingStrategy;
+    protected ICookingStrategy cookingStrategy = null;
     protected double cookingPrice;
     protected List<Toppings> toppingsList;
 
