@@ -20,10 +20,10 @@ public class PizzaCookingFactory {
 			pizza = new HawaiianPizza();
 				
 			//Set order ID by using the current orderIDCounter
-			AbstractPizza.setPizzaOrderID(AbstractPizza.getorderIDCounter());
+			pizza.setPizzaOrderID(AbstractPizza.getorderIDCounter());
 				
 			//Increment orderIDCounter
-			AbstractPizza.setorderIDCounter((AbstractPizza.getorderIDCounter)+1);
+			AbstractPizza.setorderIDCounter((AbstractPizza.getorderIDCounter())+1);
 				
 			//Return pizza
 			return pizza;
@@ -35,10 +35,10 @@ public class PizzaCookingFactory {
 			pizza = new MargheritaPizza();
 				
 			//Set order ID by using the current orderIDCounter
-			AbstractPizza.setPizzaOrderID(AbstractPizza.getorderIDCounter());
+			pizza.setPizzaOrderID(AbstractPizza.getorderIDCounter());
 				
 			//Increment orderIDCounter
-			AbstractPizza.setorderIDCounter((AbstractPizza.getorderIDCounter)+1);
+			AbstractPizza.setorderIDCounter((AbstractPizza.getorderIDCounter())+1);
 				
 			//Return pizza
 			return pizza;
@@ -50,10 +50,10 @@ public class PizzaCookingFactory {
 			pizza = new SupremePizza();
 				
 			//Set order ID by using the current orderIDCounter
-			AbstractPizza.setPizzaOrderID(AbstractPizza.getorderIDCounter());
+			pizza.setPizzaOrderID(AbstractPizza.getorderIDCounter());
 				
 			//Increment orderIDCounter
-			AbstractPizza.setorderIDCounter((AbstractPizza.getorderIDCounter)+1);
+			AbstractPizza.setorderIDCounter((AbstractPizza.getorderIDCounter())+1);
 				
 			//Return pizza
 			return pizza;
@@ -65,19 +65,20 @@ public class PizzaCookingFactory {
 			pizza = new VegetarianPizza();
 				
 			//Set order ID by using the current orderIDCounter
-			AbstractPizza.setPizzaOrderID(AbstractPizza.getorderIDCounter());
+			pizza.setPizzaOrderID(AbstractPizza.getorderIDCounter());
 				
 			//Increment orderIDCounter
-			AbstractPizza.setorderIDCounter((AbstractPizza.getorderIDCounter)+1);
+			AbstractPizza.setorderIDCounter((AbstractPizza.getorderIDCounter())+1);
 				
 			//Return pizza
 			return pizza;
 		}
 			
-		//If pizza type is not found, print error message
+		//If pizza type is not found, throw exception
 		else {
-			System.out.println("Pizza Type not found. Pizza could not be created.");
+			throw new IllegalArgumentException("Pizza Type not found. Pizza could not be created.");
 		}
+	
 	}
 
 }
