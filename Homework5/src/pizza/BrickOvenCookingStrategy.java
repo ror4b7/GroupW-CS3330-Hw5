@@ -3,7 +3,7 @@ package pizza;
 public class BrickOvenCookingStrategy implements ICookingStrategy {
 
 
-    //Takes a pizza as input and then stes its cooking strartgey to current, updates cooking price and totalPrice 
+    //Takes a pizza as input and then sets its cooking strategy to current, updates cooking price and totalPrice.
     @Override
     public boolean cook(AbstractPizza pizza)
     {
