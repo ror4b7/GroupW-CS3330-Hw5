@@ -8,6 +8,7 @@ public class AbstractPizza {
     protected double priceWithoutToppings;
     protected double totalPrice;
     protected int pizzaOrderID;
+    protected static int orderIDCounter;
     protected ICookingStrategy cookingStrategy;
     protected double cookingPrice;
     protected List<Toppings> toppingsList;
@@ -46,6 +47,14 @@ public class AbstractPizza {
 
     public void setPizzaOrderID(int pizzaOrderID) {
         this.pizzaOrderID = pizzaOrderID;
+    }
+    
+    public static int getorderIDCounter() {
+        return orderIDCounter;
+    }
+
+    public static void setorderIDCounter(int a) {
+        orderIDCounter = a;
     }
 
     public ICookingStrategy getCookingStrategy() {
