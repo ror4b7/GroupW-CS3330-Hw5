@@ -3,7 +3,7 @@ package pizza;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractPizza {
+public abstract class AbstractPizza {
 
     protected double priceWithoutToppings;
     protected double totalPrice;
