@@ -13,10 +13,8 @@ public class HawaiianPizza extends AbstractPizza {
         this.totalPrice = addTopingsToPrice(priceWithoutToppings) + priceWithoutToppings; 
     }
 
-
-
     
-    //Addds the deafult toppings
+    //Adds the deafult toppings
 
     //TOMATO, CHEESE, BELL_PEPPER, ITALIAN_SAUSAGE, PEPPERONI, BLACK_OLIVE, MUSHROOM
     protected void addDefaultToppings() {
@@ -58,6 +56,14 @@ public class HawaiianPizza extends AbstractPizza {
         totalPrice = addTopingsToPrice(priceWithoutToppings) + priceWithoutToppings; 
         return totalPrice; 
     }
+
+
+	@Override
+	public String toString() {
+		return "HawaiianPizza [priceWithoutToppings=" + priceWithoutToppings + ", totalPrice=" + totalPrice
+				+ ", pizzaOrderID=" + pizzaOrderID + ", cookingStrategy=" + cookingStrategy + ", cookingPrice="
+				+ cookingPrice + ", toppingsList=" + toppingsList + "]";
+	}
 
    
 

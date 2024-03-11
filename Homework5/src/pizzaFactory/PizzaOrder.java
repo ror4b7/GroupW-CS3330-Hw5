@@ -8,6 +8,7 @@ import pizza.ConventionalOvenCookingStrategy;
 import pizza.CookingStyleType;
 import pizza.ICookingStrategy;
 import pizza.MicrowaveCookingStrategy;
+import pizza.PizzaType;
 import pizza.Toppings;
 
 public class PizzaOrder {
@@ -49,6 +50,58 @@ public class PizzaOrder {
             }
         }
     }
+    
+    public void printPizzaOrderCart(int orderID) {
+        // Check if the pizza order list is empty
+        if(pizzaOrderList.isEmpty()) {
+            // Print a message if the cart is empty
+            System.out.println("Cart is empty");
+        }
+        else {
+            // Iterate over the list of pizzas in the order
+            for(AbstractPizza pizza : pizzaOrderList) {
+                // Print the details of each pizza
+                System.out.println(pizza.toString());
+            }
+        }
+    }
+
+    
+    
+    public AbstractPizza getPizzaByOrderID(int orderID) {
+        // Iterate through the list of pizza orders
+        for(AbstractPizza pizza : pizzaOrderList) {
+            
+            // Check if the current pizza's order ID matches the provided order ID
+            if(pizza.getPizzaOrderID() == orderID) {
+                // If a match is found, return the current pizza
+                return pizza;
+            }
+        }
+        // If no pizza with the given order ID is found, print a message to the console
+        System.out.println("\nSorry, but there is no pizza with that order ID.");
+        // Return null to indicate that no matching pizza was found
+        return null;
+    }
+    
+    public boolean addPizzaToCart(PizzaType pizzaType) {
+        try {
+            // Attempt to create a pizza of the specified type
+            AbstractPizza pizza = pizzaFactory.createPizza(pizzaType);
+            // If pizza creation was successful, add it to the order list
+            pizzaOrderList.add(pizza);
+            // Optionally, return true to indicate that the pizza was successfully added
+            return true;
+        } catch (IllegalArgumentException e) {
+            // Handle the case where the pizzaType was not recognized
+            // This could involve logging the error, notifying the user, etc.
+            System.out.println("Failed to add pizza to cart: pizzaType not found ");
+            // Return false to indicate failure to add the pizza to the cart
+            return false;
+        }
+    }
+
+
     
     /*This function checks if there are any uncooked pizzas in the list. If there are,
      * the function returns true; otherwise, it returns false.
