@@ -56,6 +56,13 @@ public class MargheritaPizza  extends AbstractPizza
         totalPrice = addTopingsToPrice(priceWithoutToppings) + priceWithoutToppings; 
         return totalPrice; 
     }
+    
+	@Override
+	public String toString() {
+		return "Margherita Pizza: [priceWithoutToppings=" + priceWithoutToppings + ", totalPrice=" + totalPrice
+				+ ", pizzaOrderID=" + pizzaOrderID + ", cookingStrategy=" + cookingStrategy + ", cookingPrice="
+				+ cookingPrice + ", toppingsList=" + toppingsList + "]";
+	}
 }
 
    

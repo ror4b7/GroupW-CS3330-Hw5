@@ -62,7 +62,7 @@ public class HawaiianPizza extends AbstractPizza {
 
 	@Override
 	public String toString() {
-		return "HawaiianPizza [priceWithoutToppings=" + priceWithoutToppings + ", totalPrice=" + totalPrice
+		return "Hawaiian Pizza: [priceWithoutToppings=" + priceWithoutToppings + ", totalPrice=" + totalPrice
 				+ ", pizzaOrderID=" + pizzaOrderID + ", cookingStrategy=" + cookingStrategy + ", cookingPrice="
 				+ cookingPrice + ", toppingsList=" + toppingsList + "]";
 	}
