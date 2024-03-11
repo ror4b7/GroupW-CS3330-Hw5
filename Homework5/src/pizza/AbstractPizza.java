@@ -72,6 +72,12 @@ public abstract class AbstractPizza {
     public void setCookingPrice(double cookingPrice) {
         this.cookingPrice = cookingPrice;
     }
+    
+    // abstract methods to be implemented in subclasses
+    public abstract double updatePizzaPrice();
+    protected abstract double addTopingsToPrice(double priceWithoutToppings);
+    
+
 
     
 }
