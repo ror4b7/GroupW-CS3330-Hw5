@@ -1,5 +1,6 @@
 package pizzaFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pizza.AbstractPizza;
@@ -67,7 +68,6 @@ public class PizzaOrder {
     }
 
     
-    
     public AbstractPizza getPizzaByOrderID(int orderID) {
         // Iterate through the list of pizza orders
         for(AbstractPizza pizza : pizzaOrderList) {
@@ -93,12 +93,51 @@ public class PizzaOrder {
             // Optionally, return true to indicate that the pizza was successfully added
             return true;
         } catch (IllegalArgumentException e) {
-            // Handle the case where the pizzaType was not recognized
-            // This could involve logging the error, notifying the user, etc.
+            // Handles the case where the pizzaType was not found
             System.out.println("Failed to add pizza to cart: pizzaType not found ");
             // Return false to indicate failure to add the pizza to the cart
             return false;
         }
+    }
+    
+    public boolean addNewToppingToPizza(int orderID, Toppings topping) {
+        // Loop through pizzas to find one with the given order ID.
+        for(AbstractPizza pizza : pizzaOrderList) {
+            if(pizza.getPizzaOrderID() == orderID) {
+                // Get current toppings and check if the new topping is already there.
+                List<Toppings> listOfToppings = pizza.getToppingsList();
+                if(!listOfToppings.contains(topping)) {
+                    // Add new topping and update pizza price, then return true.
+                    listOfToppings.add(topping);
+                    pizza.updatePizzaPrice();
+                    return true;
+                } else {
+                    // Topping exists, notify and return false.
+                    System.out.println("Pizza already has that topping");
+                    return false;
+                }
+            }
+        }
+        // No pizza found with the given order ID, return false.
+        System.out.println("No pizza was found with that orderID");
+        return false; 
+    }
+    
+    public boolean removeToppingFromPizza(int orderID, Toppings topping) {
+        // Iterate through pizza orders to find the one with the given orderID.
+        for (AbstractPizza pizza : pizzaOrderList) {
+            if (pizza.getPizzaOrderID() == orderID) {
+                // Attempt to remove the topping if it exists.
+                if (pizza.getToppingsList().remove(topping)) {
+                    pizza.updatePizzaPrice(); // Update price due to topping removal.
+                    return true; // Topping was successfully removed.
+                }
+                System.out.println("Topping not found");
+                return false; // Topping was not found.
+            }
+        }
+        System.out.println("No pizza was found with that orderID");
+        return false; // Pizza with the given orderID was not found.
     }
 
 
