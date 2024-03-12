@@ -35,6 +35,7 @@ public class MargheritaPizza  extends AbstractPizza
 
     
     //This function takes priceWithouTopping and calcutes the toppings price
+    @Override
     protected double addTopingsToPrice(double priceWithoutToppings)
     {
        double toppingsPrice = 0; 
@@ -51,6 +52,7 @@ public class MargheritaPizza  extends AbstractPizza
 
 
     //THis function upates the total price function by adding together addToppingsPrice to priceWithoutTOppings
+    @Override
     public double updatePizzaPrice()
     {
         totalPrice = addTopingsToPrice(priceWithoutToppings) + priceWithoutToppings; 
