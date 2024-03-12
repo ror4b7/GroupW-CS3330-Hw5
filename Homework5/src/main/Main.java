@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import pizza.CookingStyleType;
 import pizza.PizzaType;
+import pizza.Toppings;
 import pizzaFactory.PizzaCookingFactory;
 import pizzaFactory.PizzaOrder;
 
@@ -42,5 +43,34 @@ public class Main {
             //Gets exception message if thrown
             System.out.println("Error: " + e.getMessage());
         }
+        
+        // testing Justices stuff
+        PizzaOrder newOrder = new PizzaOrder(new PizzaCookingFactory(), new ArrayList<>());
+        newOrder.addPizzaToCart(PizzaType.MARGHERITA);
+        newOrder.addPizzaToCart(PizzaType.VEGETARIAN);
+        System.out.println("\nPizzas In Cart:");
+        newOrder.printPizzaOrderCart(2);
+        
+        // add a topping
+        newOrder.addNewToppingToPizza(5, Toppings.CANADIAN_BACON);
+        System.out.println("\nPizzas in cart after adding one topping:");
+        newOrder.printPizzaOrderCart(2);
+        
+        // select the cooking strategy
+        newOrder.selectCookingStrategyByPizzaOrderID(5, CookingStyleType.BRICK_OVEN);
+        newOrder.selectCookingStrategyByPizzaOrderID(6, CookingStyleType.CONVENTIONAL_OVEN);
+        System.out.println("\nPizzas in cart after selecting cooking strategies:");
+        newOrder.printPizzaOrderCart(2);
+        
+        // add another topping
+        newOrder.addNewToppingToPizza(5, Toppings.BELL_PEPPER);
+        System.out.println("\nPizzas in cart after adding another topping:");
+        newOrder.printPizzaOrderCart(2);
+        
+        // remove the topping just added
+        newOrder.removeToppingFromPizza(5, Toppings.BELL_PEPPER);
+        System.out.println("\nPizzas in cart after removing a topping:");
+        newOrder.printPizzaOrderCart(2);
+        
 	}
 }

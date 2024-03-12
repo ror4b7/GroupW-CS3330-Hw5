@@ -51,7 +51,7 @@ public class PizzaOrder {
             }
         }
     }
-    
+    // prints the list of pizzas in the orderlist (not sure why orderID needs to be included in this case)
     public void printPizzaOrderCart(int orderID) {
         // Check if the pizza order list is empty
         if(pizzaOrderList.isEmpty()) {
@@ -90,7 +90,7 @@ public class PizzaOrder {
             AbstractPizza pizza = pizzaFactory.createPizza(pizzaType);
             // If pizza creation was successful, add it to the order list
             pizzaOrderList.add(pizza);
-            // Optionally, return true to indicate that the pizza was successfully added
+            // return true to indicate that the pizza was successfully added
             return true;
         } catch (IllegalArgumentException e) {
             // Handles the case where the pizzaType was not found
@@ -109,7 +109,10 @@ public class PizzaOrder {
                 if(!listOfToppings.contains(topping)) {
                     // Add new topping and update pizza price, then return true.
                     listOfToppings.add(topping);
-                    pizza.updatePizzaPrice();
+                    pizza.updatePizzaPrice(); // note: this method restores the price to what it was before a cooking strategy was selected
+                    if(pizza.getCookingStrategy() != null) { // needed to update totalPrice if the cooking strategy was already selected (otherwise cooking strategy should be returned to null)
+                    	pizza.getCookingStrategy().cook(pizza); // ideally this should all be done in the updatePizzaPrice method
+                    }
                     return true;
                 } else {
                     // Topping exists, notify and return false.
@@ -129,7 +132,10 @@ public class PizzaOrder {
             if (pizza.getPizzaOrderID() == orderID) {
                 // Attempt to remove the topping if it exists.
                 if (pizza.getToppingsList().remove(topping)) {
-                    pizza.updatePizzaPrice(); // Update price due to topping removal.
+                    pizza.updatePizzaPrice(); // note: this method restores the price to what it was before a cooking strategy was selected
+                    if(pizza.getCookingStrategy() != null) { // needed to update totalPrice if the cooking strategy was already selected (otherwise cooking strategy should be returned to null)
+                    	pizza.getCookingStrategy().cook(pizza); // ideally this should all be done in the updatePizzaPrice method
+                    }
                     return true; // Topping was successfully removed.
                 }
                 System.out.println("Topping not found");
@@ -224,7 +230,7 @@ public class PizzaOrder {
         }
 
         //error message in the case that there is no pizza with the given ID
-        System.out.println("There is no pizza with the order ID " + orderID + "in this list.");
+        System.out.println("There is no pizza with the order ID " + orderID + " in this list.");
         return result;
     }
 }
